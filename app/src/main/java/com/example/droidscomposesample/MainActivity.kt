@@ -1,16 +1,9 @@
 package com.example.droidscomposesample
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
-import androidx.navigation.compose.rememberNavController
-import com.example.droidscomposesample.ui.compose.HolidayScreen
 import com.example.droidscomposesample.ui.fragment.MainFragment
 import com.example.droidscomposesample.ui.theme.DroidsComposeSampleTheme
 import dagger.hilt.android.AndroidEntryPoint
@@ -37,7 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint
 //}
 
 @AndroidEntryPoint
-class MainActivity: AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)

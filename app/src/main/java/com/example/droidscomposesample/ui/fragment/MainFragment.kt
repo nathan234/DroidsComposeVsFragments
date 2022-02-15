@@ -12,11 +12,12 @@ import com.example.droidscomposesample.ui.viewmodel.HolidayViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainFragment: Fragment() {
+class MainFragment : Fragment() {
 
     private val viewModel: HolidayViewModel by viewModels()
 
     private var _binding: FragmentMainBinding? = null
+
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
