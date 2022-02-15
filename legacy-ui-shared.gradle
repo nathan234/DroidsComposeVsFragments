@@ -1,14 +1,12 @@
-plugins {
-    id 'com.android.library'
+apply from: "$rootProject.rootDir/shared-dependencies.gradle"
+
+android {
+    buildFeatures {
+        viewBinding true
+    }
 }
 
-apply from: "$rootProject.rootDir/shared-dependencies.gradle"
-apply from: "$rootProject.rootDir/legacy-ui-shared.gradle"
-
 dependencies {
-
-    implementation project(':viewmodel')
-    implementation project(':common')
 
     // legacy android
     implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
