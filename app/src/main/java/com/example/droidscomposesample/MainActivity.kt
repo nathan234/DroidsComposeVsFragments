@@ -2,10 +2,10 @@ package com.example.droidscomposesample
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.droidscomposesample.ui.fragment.MainFragment
-import com.example.droidscomposesample.ui.theme.DroidsComposeSampleTheme
+//import androidx.compose.runtime.Composable
+//import androidx.compose.ui.tooling.preview.Preview
+import com.example.ui_fragment_recyclerview.MainFragment
+import com.example.ui_compose.theme.DroidsComposeSampleTheme
 import dagger.hilt.android.AndroidEntryPoint
 
 //@AndroidEntryPoint
@@ -42,10 +42,10 @@ class MainActivity : AppCompatActivity() {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun DefaultPreview() {
-    DroidsComposeSampleTheme {
-
-    }
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun DefaultPreview() {
+//    DroidsComposeSampleTheme {
+//
+//    }
+//}
