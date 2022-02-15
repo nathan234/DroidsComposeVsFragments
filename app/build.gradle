@@ -27,6 +27,14 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    // required for compose at the activity layer
+    buildFeatures {
+        compose true
+    }
+    // required for compose at the activity layer
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -53,6 +61,15 @@ dependencies {
 
     // AppCompat Activity required for fragment/activity
     implementation "androidx.appcompat:appcompat:$activity_app_compat_version"
+
+    // Component Activity required for Jetpack Compose
+    implementation "androidx.activity:activity-compose:$activity_compose_version"
+
+    // Compose Navigation
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
+    implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
+
+    implementation "androidx.compose.compiler:compiler:$compose_compiler_version"
 
 //    // AndroidX
 //    implementation "androidx.core:core-ktx:$core_ktx_version"

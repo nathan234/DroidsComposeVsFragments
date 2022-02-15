@@ -46,10 +46,12 @@ dependencies {
     implementation "androidx.compose.ui:ui:$compose_version"
     implementation "androidx.compose.material:material:$compose_version"
     implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
+    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
+    implementation "androidx.compose.compiler:compiler:$compose_compiler_version"
+
+    // hilt
     implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
     implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
-    implementation "androidx.activity:activity-compose:$activity_compose_version"
-    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
 
     // testing
     androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
