@@ -1,0 +1,23 @@
+apply from: "$rootProject.rootDir/shared-dependencies.gradle"
+
+android {
+    // required for compose at the activity layer
+    buildFeatures {
+        compose true
+    }
+    // required for compose at the activity layer
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+    }
+}
+
+dependencies {
+
+    // Component Activity required for Jetpack Compose
+    implementation "androidx.activity:activity-compose:$activity_compose_version"
+
+    // Compose Navigation
+    implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
+    implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
+
+}

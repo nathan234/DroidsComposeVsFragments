@@ -1,88 +1,27 @@
 plugins {
     id 'com.android.application'
-    id 'org.jetbrains.kotlin.android'
-    id 'kotlin-kapt'
-    id 'dagger.hilt.android.plugin'
 }
 
-android {
-    compileSdk 32
+apply from: "$rootProject.rootDir/shared-dependencies.gradle"
 
+apply from: "$rootProject.rootDir/compose-shared.gradle"
+apply from: "$rootProject.rootDir/legacy-ui-shared.gradle"
+
+android {
     defaultConfig {
         applicationId "com.example.droidscomposesample"
-        minSdk 21
-        targetSdk 32
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        vectorDrawables {
-            useSupportLibrary true
-        }
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-    kotlinOptions {
-        jvmTarget = '1.8'
-    }
-    buildFeatures {
-        compose true
-        viewBinding true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion compose_version
-    }
-    packagingOptions {
-        resources {
-            excludes += '/META-INF/{AL2.0,LGPL2.1}'
-        }
     }
 }
 
 dependencies {
 
-    implementation project(':data-networking')
+    implementation project(':ui-compose')
+    implementation project(':ui-fragment-recyclerview')
+    implementation project(':viewmodel')
+    implementation project(':repository')
+    implementation project(':data')
+    implementation project(':common')
 
-
-    // compose
-    implementation "androidx.compose.ui:ui:$compose_version"
-    implementation "androidx.compose.material:material:$compose_version"
-    implementation "androidx.compose.ui:ui-tooling-preview:$compose_version"
-    implementation "androidx.hilt:hilt-navigation-compose:$hilt_navigation_compose"
-    implementation "androidx.navigation:navigation-compose:$compose_navigation_version"
-    implementation "androidx.activity:activity-compose:$activity_compose_version"
-    implementation "androidx.compose.runtime:runtime-livedata:$compose_version"
-
-    // legacy android
+    // AppCompat Activity required for fragment/activity
     implementation "androidx.appcompat:appcompat:$activity_app_compat_version"
-    implementation "androidx.fragment:fragment-ktx:$fragment_ktx_version"
-    implementation "androidx.recyclerview:recyclerview:$recyclerview_version"
-    implementation "com.google.android.material:material:$material_version"
-
-    // AndroidX
-    implementation "androidx.core:core-ktx:$core_ktx_version"
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-    implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
-
-    // testing
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
-    androidTestImplementation "androidx.compose.ui:ui-test-junit4:$compose_version"
-    debugImplementation "androidx.compose.ui:ui-tooling:$compose_version"
-
-    // Dagger Hilt Dependency Injection
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-compiler:$hilt_version"
 }

@@ -14,4 +14,9 @@ dependencyResolutionManagement {
 }
 rootProject.name = "DroidsComposeSample"
 include ':app'
-include ':data-networking'
+include ':data'
+include ':repository'
+include ':viewmodel'
+include ':ui-compose'
+include ':ui-fragment-recyclerview'
+include ':common'

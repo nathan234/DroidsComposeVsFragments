@@ -1,0 +1,11 @@
+plugins {
+    id 'com.android.library'
+}
+
+apply from: "$rootProject.rootDir/shared-dependencies.gradle"
+
+dependencies {
+    implementation project(':common')
+    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+}
