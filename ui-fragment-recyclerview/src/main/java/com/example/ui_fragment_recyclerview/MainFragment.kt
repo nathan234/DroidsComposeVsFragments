@@ -36,12 +36,12 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         if (adapter == null) {
-            adapter = HolidayAdapter(emptyList())
+            adapter = HolidayAdapter {}
         }
         binding.recyclerView.layoutManager = LinearLayoutManager(view.context)
         binding.recyclerView.adapter = adapter
         viewModel.holidaysLiveData.observe(viewLifecycleOwner) {
-            adapter?.updateItems(it)
+            adapter?.submitList(it)
         }
     }
 

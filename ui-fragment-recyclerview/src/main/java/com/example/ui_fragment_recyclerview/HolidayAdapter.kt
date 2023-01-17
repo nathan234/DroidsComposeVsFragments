@@ -2,16 +2,23 @@ package com.example.ui_fragment_recyclerview
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.common.Holiday
 import com.example.ui_fragment_recyclerview.databinding.HolidayItemBinding
 
 class HolidayAdapter(
-    private var holidayList: List<Holiday>
-) : RecyclerView.Adapter<HolidayAdapter.HolidayViewHolder>() {
+    private val onClick: (Holiday) -> Unit
+) : ListAdapter<Holiday, HolidayAdapter.HolidayViewHolder>(HolidayDiffCallback) {
 
-    inner class HolidayViewHolder(val binding: HolidayItemBinding) :
-        RecyclerView.ViewHolder(binding.root)
+    class HolidayViewHolder(val binding: HolidayItemBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+            fun bind(holiday: Holiday) {
+                val date = "Date: ${holiday.date}"
+                binding.holidayItem.text = date
+            }
+        }
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -26,16 +33,16 @@ class HolidayAdapter(
     }
 
     override fun onBindViewHolder(holder: HolidayViewHolder, position: Int) {
-        val date = "Date: ${holidayList[position].date}"
-        holder.binding.holidayItem.text = date
+        holder.bind(getItem(position))
+    }
+}
+
+object HolidayDiffCallback : DiffUtil.ItemCallback<Holiday>() {
+    override fun areItemsTheSame(oldItem: Holiday, newItem: Holiday): Boolean {
+        return oldItem == newItem
     }
 
-    override fun getItemCount(): Int {
-        return holidayList.size
-    }
-
-    fun updateItems(newItems: List<Holiday>) {
-        holidayList = newItems
-        notifyDataSetChanged()
+    override fun areContentsTheSame(oldItem: Holiday, newItem: Holiday): Boolean {
+        return oldItem.date == newItem.date
     }
 }
